@@ -55,7 +55,7 @@ university-management-system/
 │── backend/                  # Flask backend
 │   ├── setup_database.py     # Flask API for database management
 │   ├── requirements.txt      # Dependencies for backend
-│   ├── .env                  # Database credentials
+│  
 │
 │── frontend/                 # React frontend
 │   ├── src/
