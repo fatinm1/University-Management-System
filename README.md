@@ -13,9 +13,9 @@ A full-stack Flask + React application that allows users to manage students, ins
 ✅ View Enrollment Records - Displays a table of student-course enrollments.
 
 ## Tech Stack
-Frontend: React, Axios
+  ## Frontend: React, Axios
 
-Backend: Flask, Flask-SQLAlchemy, Flask-CORS
+  ## Backend: Flask, Flask-SQLAlchemy, Flask-CORS
 
 Database: MySQL
 
