@@ -8,7 +8,7 @@ A full-stack Flask + React application that allows users to manage students, ins
 ✅ Enroll Students in Courses - Assign students to courses and remove them if needed.
 ✅ View Enrollment Records - Displays a table of student-course enrollments.
 
-##🛠 Tech Stack
+## Tech Stack
 Frontend: React, Axios
 Backend: Flask, Flask-SQLAlchemy, Flask-CORS
 Database: MySQL
