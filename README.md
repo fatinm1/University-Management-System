@@ -10,9 +10,13 @@ A full-stack Flask + React application that allows users to manage students, ins
 
 ## Tech Stack
 Frontend: React, Axios
+
 Backend: Flask, Flask-SQLAlchemy, Flask-CORS
+
 Database: MySQL
+
 Libraries:
+
 flask
 flask_sqlalchemy
 flask_cors
