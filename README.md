@@ -28,4 +28,18 @@ Libraries:
   - axios
 
 ## Project Structure
-university-management-system/ │── backend/ # Flask backend │ ├── setup_database.py # Flask API for database management │ ├── requirements.txt # Dependencies for backend │ ├── .env # Database credentials │── frontend/ # React frontend │ ├── src/ │ │ ├── App.js # Main React component │ │ ├── index.js # Entry point for React app │ │ ├── components/ # Additional UI components │ ├── package.json # Frontend dependencies │── README.md # Documentation │── .gitignore # Files to ignore in Git
+university-management-system/
+│── backend/                 # Flask backend
+│   ├── setup_database.py    # Flask API for database management
+│   ├── requirements.txt     # Dependencies for backend
+│   ├── .env                 # Database credentials
+│
+│── frontend/                # React frontend
+│   ├── src/                 
+│   │   ├── App.js           # Main React component
+│   │   ├── index.js         # Entry point for React app
+│   │   ├── components/      # Additional UI components
+│   
+│── package.json             # Frontend dependencies
+│── README.md                # Documentation
+│── .gitignore               # Files to ignore in Git
