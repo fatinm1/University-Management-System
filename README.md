@@ -17,8 +17,12 @@ Database: MySQL
 
 Libraries:
 
-flask
-flask_sqlalchemy
-flask_cors
-pymysql
-axios
+  - flask
+  
+  - flask_sqlalchemy
+  
+  - flask_cors
+  
+  - pymysql
+  
+  - axios
