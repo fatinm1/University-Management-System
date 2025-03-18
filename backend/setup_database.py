@@ -6,7 +6,7 @@ import pymysql
 # Initialize Flask app
 app = Flask(__name__)
 
-# Allow React frontend to access Flask API
+# Enable CORS (Cross-Origin Resource Sharing) to allow frontend requests from React app
 CORS(app, resources={r"/*": {"origins": "http://localhost:3000", "supports_credentials": True, "allow_headers": "*", "methods": ["GET", "POST", "PUT", "DELETE"]}})
 
 @app.after_request
@@ -14,14 +14,15 @@ def after_request(response):
     response.headers["Access-Control-Allow-Origin"] = "http://localhost:3000"
     response.headers["Access-Control-Allow-Headers"] = "Content-Type, Authorization"
     response.headers["Access-Control-Allow-Methods"] = "GET, POST, PUT, DELETE, OPTIONS"
-    response.headers["Access-Control-Allow-Credentials"] = "true"  # ✅ Critical Fix
+    response.headers["Access-Control-Allow-Credentials"] = "true"  
     return response
 
-# ✅ Database Configuration
+# Database Configuration
 USERNAME = "root"
-PASSWORD = "Bd2222Mo?"  # Make sure this is correct
+PASSWORD = "Bd2222Mo?"  
 DB_NAME = "university"
 
+# Configure SQLAlchemy database connection
 app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql+pymysql://{USERNAME}:{PASSWORD}@localhost/{DB_NAME}"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
@@ -29,24 +30,28 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 # ==========================
-# 🎓 Database Models
+#  Database Models
 # ==========================
+# Define Student table/model
 class Student(db.Model):
     student_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     credits_earned = db.Column(db.Integer, nullable=False)
 
+# Define Instructor table/model
 class Instructor(db.Model):
     instructor_id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     department = db.Column(db.String(255), nullable=False)
 
+# Define Course table/model
 class Course(db.Model):
     course_id = db.Column(db.Integer, primary_key=True)
     course_title = db.Column(db.String(255), nullable=False)
     instructor_id = db.Column(db.Integer, db.ForeignKey("instructor.instructor_id"), nullable=False)
     credits = db.Column(db.Integer, nullable=False)
 
+# Define Enrollment table/model (Many-to-Many relationship between Students & Courses)
 class Enrollment(db.Model):
     student_id = db.Column(
         db.Integer, db.ForeignKey("student.student_id", ondelete="CASCADE"), primary_key=True
@@ -57,10 +62,11 @@ class Enrollment(db.Model):
     grade = db.Column(db.String(5), nullable=True)
 
 # ==========================
-# 🛠️ Database Setup API
+#  Database Setup API
 # ==========================
 @app.route('/')
 def home():
+    """ Default route to check if the API is running """
     return "Flask Backend is Running! Use /students or other routes."
 
 @app.route('/initialize-db', methods=['POST'])
@@ -74,12 +80,13 @@ def initialize_db():
         return jsonify({"error": "Database initialization failed"}), 500
 
 # ==========================
-# 📌 API Endpoints
+#  API Endpoints
 # ==========================
 
-# ✅ Get all students
+# Get all students
 @app.route('/students', methods=['GET'])
 def get_students():
+    """ Fetch all students from the database """
     try:
         students = Student.query.all()
         return jsonify([{"id": s.student_id, "name": s.name, "credits": s.credits_earned} for s in students])
@@ -87,7 +94,7 @@ def get_students():
         print(f"❌ Server Error: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
 
-# ✅ Add a new student
+# Add a new student
 @app.route('/students', methods=['POST'])
 def add_student():
     try:
@@ -149,7 +156,7 @@ def update_student(student_id):
         print(f"❌ Error updating student: {str(e)}")
         return jsonify({"error": "Failed to update student"}), 500
 
-# ✅ Get all instructors
+# Get all instructors
 @app.route('/instructors', methods=['GET'])
 def get_instructors():
     try:
@@ -159,7 +166,7 @@ def get_instructors():
         print(f"❌ Server Error: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
 
-# ✅ Add an instructor
+# Add an instructor
 @app.route('/instructors', methods=['POST'])
 def add_instructor():
     try:
@@ -185,7 +192,7 @@ def add_instructor():
         print(f"❌ Error adding instructor: {str(e)}")
         return jsonify({"error": "Failed to add instructor"}), 500
 
-# ✅ Delete an instructor
+# Delete an instructor
 @app.route('/instructors/<int:instructor_id>', methods=['DELETE'])
 def delete_instructor(instructor_id):
     try:
@@ -200,7 +207,7 @@ def delete_instructor(instructor_id):
         print(f"❌ Error deleting instructor: {str(e)}")
         return jsonify({"error": "Failed to delete instructor"}), 500
 
-# ✅ Modify an instructor
+# Modify an instructor
 @app.route('/instructors/<int:instructor_id>', methods=['PUT'])
 def modify_instructor(instructor_id):
     try:
@@ -217,7 +224,7 @@ def modify_instructor(instructor_id):
         print(f"❌ Error modifying instructor: {str(e)}")
         return jsonify({"error": "Failed to update instructor"}), 500
 
-# ✅ Get all courses
+# Get all courses
 @app.route('/courses', methods=['GET'])
 def get_courses():
     try:
@@ -227,7 +234,7 @@ def get_courses():
         print(f"❌ Server Error: {str(e)}")
         return jsonify({"error": "Internal Server Error"}), 500
     
-# ✅ Add a new course
+# Add a new course
 @app.route('/courses', methods=['POST'])
 def add_course():
     try:
@@ -255,7 +262,7 @@ def add_course():
         print(f"❌ Error adding course: {str(e)}")
         return jsonify({"error": "Failed to add course"}), 500
     
-# ✅ Delete a course
+# Delete a course
 @app.route('/courses/<int:course_id>', methods=['DELETE'])
 def delete_course(course_id):
     try:
@@ -271,7 +278,7 @@ def delete_course(course_id):
         print(f"❌ Error deleting course: {str(e)}")
         return jsonify({"error": "Failed to delete course"}), 500
     
-# ✅ Update a course
+# Update a course
 @app.route('/courses/<int:course_id>', methods=['PUT'])
 def update_course(course_id):
     try:
@@ -291,7 +298,7 @@ def update_course(course_id):
         print(f"❌ Error updating course: {str(e)}")
         return jsonify({"error": "Failed to update course"}), 500
 
-# ✅ Add a student to a course
+# Add a student to a course
 @app.route('/enroll', methods=['POST'])
 def enroll_student():
     try:
@@ -323,7 +330,7 @@ def get_enrollments():
         print(f"❌ Error fetching enrollments: {str(e)}")
         return jsonify({"error": "Failed to fetch enrollments"}), 500
 
-# ✅ Remove a student from a course
+# Remove a student from a course
 @app.route('/enroll/<int:student_id>/<int:course_id>', methods=['DELETE'])
 def drop_student(student_id, course_id):
     try:
@@ -335,13 +342,14 @@ def drop_student(student_id, course_id):
         print(f"❌ Error dropping student: {str(e)}")
         return jsonify({"error": "Failed to drop student"}), 500
 
-# ✅ Run Flask Server
+# Run Flask Server
 if __name__ == "__main__":
-   from sqlalchemy.sql import text  # ✅ Import `text` from SQLAlchemy
+   from sqlalchemy.sql import text 
 
+# Ensure database connection before running the app
 with app.app_context():
     try:
-        db.session.execute(text("SELECT 1"))  # ✅ Use `text()`
+        db.session.execute(text("SELECT 1")) 
         print("✅ Database connection successful!")
     except Exception as e:
         print(f"❌ Database connection failed: {e}")
