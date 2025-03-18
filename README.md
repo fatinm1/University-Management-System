@@ -51,18 +51,4 @@ A full-stack Flask + React application that allows users to manage students, ins
     - axios - HTTP client for frontend API requests
 
 ## Project Structure
-university-management-system/
-│── backend/                  # Flask backend
-│   ├── setup_database.py     # Flask API for database management
-│   ├── requirements.txt      # Dependencies for backend
-│  
-│
-│── frontend/                 # React frontend
-│   ├── src/
-│   │   ├── App.js            # Main React component
-│   │   ├── index.js          # Entry point for React app
-│   │   ├── components/       # Additional UI components
-│
-│── package.json             # Frontend dependencies
-│── README.md                # Documentation
-│── .gitignore               # Files to ignore in Git
+![Project Structure](https://github.com/user-attachments/assets/549f0a63-9de4-403c-a7d3-4295f58ba600)
