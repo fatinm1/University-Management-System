@@ -91,3 +91,35 @@ Initialize the database:
 Start the Flask backend:
 
     python setup_database.py
+
+## Setup Frontend (React)
+## Navigate to the frontend folder:
+
+    cd src
+
+## Install dependencies:
+
+    npm install
+
+## Start the React development server:
+
+    npm start
+
+## 📡 API Endpoints
+## Method               Endpoint                            Description
+GET	                    /students	                        Retrieve all students
+POST	                /students	                        Add a new student
+PUT	                    /students/{id}	                    Update student details
+DELETE	                /students/{id}	                    Delete a student
+GET	                    /courses	                        Retrieve all courses
+POST	                /courses	                        Add a new course
+PUT	                    /courses/{id}	                    Update course details
+DELETE	                /courses/{id}	                    Delete a course
+GET	                    /instructors	                    Retrieve all instructors
+POST	                /instructors	                    Add a new instructor
+PUT	                    /instructors/{id}	                Update instructor details
+DELETE	                /instructors/{id}	                Delete an instructor
+POST	                /enroll	                            Enroll a student in a course
+DELETE	                /enroll/{student_id}/{course_id}	Drop a student from a course
+GET	                    /enrollments	                    Retrieve all enrollment records
+POST	                /initialize-db	                    Initialize the database tables.
