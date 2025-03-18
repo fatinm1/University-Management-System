@@ -17,7 +17,7 @@ def after_request(response):
     response.headers["Access-Control-Allow-Credentials"] = "true"  # ✅ Critical Fix
     return response
 
-# Database Configuration
+# ✅ Database Configuration
 USERNAME = "root"
 PASSWORD = "Bd2222Mo?"  # Make sure this is correct
 DB_NAME = "university"
