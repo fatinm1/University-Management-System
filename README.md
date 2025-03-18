@@ -1,8 +1,8 @@
-## University Management System
+## University Management System 🎓
 
 A full-stack Flask + React application that allows users to manage students, instructors, courses, and enrollments in a university system.
 
-## Features
+## 🚀 Features
 
 ✅ Manage Students - Add, update, delete, and list students.
 
@@ -14,7 +14,7 @@ A full-stack Flask + React application that allows users to manage students, ins
 
 ✅ View Enrollment Records - Displays a table of student-course enrollments.
 
-## Tech Stack
+## 🛠️ Tech Stack
 
 ## Frontend:
 
@@ -53,10 +53,10 @@ A full-stack Flask + React application that allows users to manage students, ins
 ## Project Structure
 ![Project Structure](https://github.com/user-attachments/assets/549f0a63-9de4-403c-a7d3-4295f58ba600)
 
-## 🚀 Installation & Setup
+## ⚙️ Installation & Setup
 ## 1️⃣ Clone the Repository
 
-git clone https://github.com/fatinm1/University-Management-System.git
+    git clone https://github.com/fatinm1/University-Management-System.git
 
     cd University-Management-System
 
@@ -104,4 +104,3 @@ Start the Flask backend:
 ## Start the React development server:
 
     npm start
-
