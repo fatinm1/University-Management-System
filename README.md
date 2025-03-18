@@ -58,7 +58,7 @@ A full-stack Flask + React application that allows users to manage students, ins
 
 git clone https://github.com/fatinm1/University-Management-System.git
 
-cd University-Management-System
+    cd University-Management-System
 
 ## 2️⃣ Setup Backend (Flask)
 Navigate to the backend folder:
@@ -105,21 +105,3 @@ Start the Flask backend:
 
     npm start
 
-## 📡 API Endpoints
-## Method               Endpoint                            Description
-GET	                    /students	                        Retrieve all students
-POST	                /students	                        Add a new student
-PUT	                    /students/{id}	                    Update student details
-DELETE	                /students/{id}	                    Delete a student
-GET	                    /courses	                        Retrieve all courses
-POST	                /courses	                        Add a new course
-PUT	                    /courses/{id}	                    Update course details
-DELETE	                /courses/{id}	                    Delete a course
-GET	                    /instructors	                    Retrieve all instructors
-POST	                /instructors	                    Add a new instructor
-PUT	                    /instructors/{id}	                Update instructor details
-DELETE	                /instructors/{id}	                Delete an instructor
-POST	                /enroll	                            Enroll a student in a course
-DELETE	                /enroll/{student_id}/{course_id}	Drop a student from a course
-GET	                    /enrollments	                    Retrieve all enrollment records
-POST	                /initialize-db	                    Initialize the database tables.
