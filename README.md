@@ -62,7 +62,7 @@ cd University-Management-System
 
 ## 2️⃣ Setup Backend (Flask)
 Navigate to the backend folder:
-    
+
     cd backend
 
 Create a virtual environment (optional but recommended):
